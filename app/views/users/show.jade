@@ -1,0 +1,25 @@
+extends ../shared/template
+block content
+  h2.text-center Profile
+  .row
+    .col-xs-6
+      table.table
+        thead
+          th Email
+          th Phone
+          th Privacy
+          th Tagline
+          th Facebook
+          th Twitter
+        tbody
+          td= user.email
+          td= user.phone
+          td= user.isVisible
+          td= user.tagline
+          td= user.facebook
+          td= user.twitter
+    .col-xs-6
+      a(href='/profile/edit') Edit Profile
+      .photo(style='background-image: #{user.photo};')
+
+block scripts
