@@ -80,3 +80,7 @@ exports.message = function(req, res){
     });
   });
 };
+
+exports.mailList = function(req, res){
+  res.render('users/message-index');
+};

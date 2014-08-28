@@ -137,5 +137,18 @@ describe('users', function(){
     });
   });
 
+  describe('get /users/3/messages', function(){
+    it('should fetch the users index of messages', function(done){
+      request(app)
+      .get('/users/000000000000000000000001/messages')
+      .set('cookie', cookie)
+      .send('mtype=internal&message=hey')
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.equal('bob@aol.com');
+      });
+    });
+  });
+
 });//end
 

@@ -81,6 +81,7 @@ describe('User', function(){
         });
       });
     });
+
   });
 
 });//end
