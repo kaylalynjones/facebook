@@ -1,7 +1,7 @@
 ## name of project
 ### Code Badges
-build status icon
-coverage status icon
+[![Build Status](https://travis-ci.org/kaylalynjones/facebook.svg)](https://travis-ci.org/kaylalynjones/facebook)
+
 
 ### About
 write a description about your project
