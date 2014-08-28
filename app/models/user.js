@@ -86,9 +86,9 @@ module.exports = User;
   }
 
   function sendEmail(from, to, subject, message, cb){
-    var api_key = process.env.MGAPI,
+    var apiKey = process.env.MGAPI,
         domain = process.env.MGDOMAIN,
-        mailgun = new Mailgun({apiKey: api_key, domain: domain}),
+        mailgun = new Mailgun({apiKey: apiKey, domain: domain}),
         data = {
           from: from,
           to: to,
@@ -96,4 +96,4 @@ module.exports = User;
           text: message
         };
     mailgun.messages().send(data, cb);
-  };
+  }
