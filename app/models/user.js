@@ -38,7 +38,6 @@ User.authenticate = function(o, cb){
 User.prototype.save = function(obj, cb){
   var properties = Object.keys(obj),
       self = this;
-  console.log('this is obj:', obj, properties);
   properties.forEach(function(property){
     switch(property){
       case 'visible':
@@ -48,10 +47,39 @@ User.prototype.save = function(obj, cb){
         self[property] = obj[property];
     }
   });
-  console.log('before save', this);
   User.collection.save(this, cb);
 };
 
+User.find = function(query, cb){
+  User.collection.find(query).toArray(cb);
+};
 
+User.findOne = function(query, cb){
+  User.collection.findOne(query, cb);
+};
+
+User.prototype.send = function(receiver, obj, cb){
+  switch(obj.mtype){
+    case 'text':
+      sendText(receiver.phone, obj.message, cb);
+      break;
+    case 'email':
+      break;
+    case 'internal':
+  }
+};
 module.exports = User;
 
+//private fn
+function sendText(to, body, cb){
+  // Twilio Credentials
+  var accountSid = 'ACa4f5cfe82426c77e6260cc02f6559f67',
+      authToken = process.env.TWILIO,
+      client = require('twilio')(accountSid, authToken);
+  //need twilio module
+  client.messages.create({
+    to: to,
+    from: '+16015014077',
+    body: body
+  }, cb);
+}

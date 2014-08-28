@@ -15,6 +15,9 @@ block content
             input(type='radio' name='visible' value='private', checked=!user.isVisible)
             span Private
         .form-group
+          label(for='email') Name
+          input.form-control#name(type='text', name='name', autofocus=true, value=user.name)
+        .form-group
           label(for='email') Email
           input.form-control#email(type='email', name='email', autofocus=true, value=user.email)
         .form-group

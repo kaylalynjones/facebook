@@ -51,5 +51,14 @@ describe('User', function(){
     });
   });
 
+  describe('.find', function(){
+    it('should find all public users', function(done){
+      User.find({isVisible:true},function(err, users){
+        expect(users).to.have.length(3);
+        done();
+      });
+    });
+  });
+
 });//end
 

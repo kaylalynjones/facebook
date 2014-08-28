@@ -1,25 +1,32 @@
 extends ../shared/template
 block content
-  h2.text-center Profile
   .row
+    .col-xs-2
+    .col-xs-4
+      img.thumbnail.profile-pic(src= user.photo)
     .col-xs-6
-      table.table
-        thead
-          th Email
-          th Phone
-          th Privacy
-          th Tagline
-          th Facebook
-          th Twitter
-        tbody
-          td= user.email
-          td= user.phone
-          td= user.isVisible
-          td= user.tagline
-          td= user.facebook
-          td= user.twitter
-    .col-xs-6
-      a(href='/profile/edit') Edit Profile
-      .photo(style='background-image: #{user.photo};')
+      .title
+        h3 Hello #{user.name}!
+        - if(!user.isVisible){
+        span Your account is private.
+        -}else{
+        span Your account is public.
+        -}
+          a.edit-link(href='/profile/edit') Edit Profile
+      .info
+        h5 Email
+        p= user.email
+        h5 Phone
+        p= user.phone
+        h5 Facebook
+        p: a(href='user.facebook', target='_blank')= user.facebook
+        h5 Twitter
+        p: a(href='user.twitter', target='_blank')= user.twitter
+  .row
+    .col-xs-12.tagline
+      h4= user.tagline
+
+
+
 
 block scripts
