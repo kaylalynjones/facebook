@@ -130,13 +130,12 @@ describe('users', function(){
       .send('mtype=text&message=hey')
       .end(function(err, res){
         expect(res.status).to.equal(302);
-        expect(res.text).to.include('steve@aol.com');
-        expect(res.headers.location).to.equal('/users/steve@aol.com');
+        expect(res.text).to.include('kaylalyne424@aol.com');
+        expect(res.headers.location).to.equal('/users/kaylalyne424@aol.com');
         done();
       });
     });
   });
-
 
 });//end
 

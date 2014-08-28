@@ -8,6 +8,7 @@ var morgan         = require('morgan'),
     RedisStore     = require('connect-redis')(session),
     security       = require('../lib/security'),
     debug          = require('../lib/debug'),
+    Mailgun        = require('mailgun-js'),
     home           = require('../controllers/home'),
     users          = require('../controllers/users');
 
