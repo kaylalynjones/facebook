@@ -1,5 +1,5 @@
 ## name of project
-### Code Badges
+[![Coverage Status](https://coveralls.io/repos/kaylalynjones/facebook/badge.png)](https://coveralls.io/r/kaylalynjones/facebook)
 [![Build Status](https://travis-ci.org/kaylalynjones/facebook.svg)](https://travis-ci.org/kaylalynjones/facebook)
 
 
