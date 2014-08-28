@@ -1,0 +1,18 @@
+extends ../shared/template
+block content
+  h2.text-center All Public Users
+
+  each user in users
+    .user
+      h3.text-center= user.name
+      .profile-thumb.thumbnail(style='background-image:url(#{user.photo});')
+      .snapshot
+        h6 Contact:
+        p: a(href='/users/#{user.email}')= user.email
+        p= user.phone
+        p: a(href='user.facebook', target='_blank')= user.facebook
+        p: a(href='user.twitter', target='_blank')= user.twitter
+
+
+
+block scripts
