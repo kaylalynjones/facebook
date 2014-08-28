@@ -74,26 +74,26 @@ User.prototype.send = function(receiver, obj, cb){
 module.exports = User;
 
 //private fns
-  function sendText(to, body, cb){
-    if(!to){return cb();}
+function sendText(to, body, cb){
+  if(!to){return cb();}
 
-    var accountSid = process.env.TWSID,
-        authToken  = process.env.TWTOK,
-        from       = process.env.FROM,
-        client     = require('twilio')(accountSid, authToken);
+  var accountSid = process.env.TWSID,
+      authToken  = process.env.TWTOK,
+      from       = process.env.FROM,
+      client     = require('twilio')(accountSid, authToken);
 
-    client.messages.create({to:to, from:from, body:body}, cb);
-  }
+  client.messages.create({to:to, from:from, body:body}, cb);
+}
 
-  function sendEmail(from, to, subject, message, cb){
-    var apiKey = process.env.MGAPI,
-        domain = process.env.MGDOMAIN,
-        mailgun = new Mailgun({apiKey: apiKey, domain: domain}),
-        data = {
-          from: from,
-          to: to,
-          subject: subject,
-          text: message
-        };
-    mailgun.messages().send(data, cb);
-  }
+function sendEmail(from, to, subject, message, cb){
+  var apiKey = process.env.MGAPI,
+      domain = process.env.MGDOMAIN,
+      mailgun = new Mailgun({apiKey: apiKey, domain: domain}),
+      data = {
+        from: from,
+        to: to,
+        subject: subject,
+        text: message
+      };
+  mailgun.messages().send(data, cb);
+}
