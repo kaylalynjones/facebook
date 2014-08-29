@@ -1,6 +1,7 @@
 'use strict';
 
 var User = require('../models/user'),
+    moment = require('moment'),
     Message = require('../models/message');
 
 exports.new = function(req, res){
@@ -84,20 +85,18 @@ exports.message = function(req, res){
 
 exports.messageList = function(req, res){
   User.findMessages(res.locals.user._id, function(messages){
-    res.render('users/message-index', {user: res.locals.user, messages:messages});
+    res.render('users/message-index', {user: res.locals.user, messages:messages, moment:moment});
   });
 };
 
 exports.messageShow = function(req, res){
   Message.findById(req.params.mId, function(message){
-    res.render('users/message-show', {message:message});
+    res.render('users/message-show', {message:message, moment:moment});
   });
 };
 
 exports.unreadMessages = function(req, res){
   Message.find({receiverId:res.locals.user._id, isRead:false}, function(messages){
-    
-    
     res.send(messages);
   });
 };
