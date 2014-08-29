@@ -1,6 +1,7 @@
 'use strict';
 
-var User = require('../models/user');
+var User = require('../models/user'),
+    Message = require('../models/message');
 
 exports.new = function(req, res){
   res.render('users/new');
@@ -81,6 +82,15 @@ exports.message = function(req, res){
   });
 };
 
-exports.mailList = function(req, res){
-  res.render('users/message-index');
+exports.messageList = function(req, res){
+  User.findMessages(res.locals.user._id, function(messages){
+    res.render('users/message-index', {user: res.locals.user, messages:messages});
+  });
+};
+
+exports.messageShow = function(req, res){
+  console.log('messageShow: mId : ', req.params.mId);
+  Message.findById(req.params.mId, function(message){
+    res.render('users/message-show', {message:message});
+  });
 };

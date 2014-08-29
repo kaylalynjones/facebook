@@ -1,0 +1,56 @@
+{
+  "_id" :{"$oid":"a00000000000000000000001"},
+  "receiverId" :{"$oid":"000000000000000000000001"},
+  "sender": {
+    "_id" : {"$oid":"000000000000000000000003"},
+    "name": "Kermit",
+    "email" : "kermit@aol.com",
+    "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2",
+    "isVisible" : true
+  },
+  "body" : "What is up?",
+  "isRead" : false,
+  "date":{"$date":477295200000}
+},
+{
+  "_id" :{"$oid":"a00000000000000000000002"},
+  "receiverId" :{"$oid":"000000000000000000000001"},
+  "sender": {
+    "name": "Kermit",
+    "_id" : {"$oid":"000000000000000000000003"},
+    "email" : "kermit@aol.com",
+    "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2",
+    "isVisible" : true
+  },
+  "body" : "Are you ready?",
+  "isRead" : false,
+  "date":{"$date":477295200000}
+},
+{
+  "_id" :{"$oid":"a00000000000000000000003"},
+  "receiverId" :{"$oid":"000000000000000000000003"},
+  "sender": {
+    "_id" : {"$oid":"000000000000000000000001"},
+    "name": "Bob",
+    "email" : "bob@aol.com",
+    "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2",
+    "isVisible" : true
+  },
+  "body" : "Wanna hang out?",
+  "isRead" : true,
+  "date":{"$date":477295200000}
+},
+{
+  "_id" :{"$oid":"a00000000000000000000004"},
+  "receiverId" :{"$oid":"000000000000000000000003"},
+  "sender": {
+    "_id" : {"$oid":"000000000000000000000004"},
+    "name": "Kayla",
+    "email" : "kaylalyne424@aol.com",
+    "password" : "$2a$10$sjPx9TkrEASeXzH6uuDCDO.n1Sj/H2A/bu/9hBFfm5fm3Z4LzrEPa",
+    "isVisible" : true
+  }
+  "body" : "Yo!",
+  "isRead" : true,
+  "date":{"$date":477295200000}
+}

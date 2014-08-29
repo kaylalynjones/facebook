@@ -3,7 +3,7 @@
 var bcrypt  = require('bcrypt'),
     _       = require('lodash'),
     Mailgun = require('mailgun-js'),
-    Message = require('../models/message'),
+    Message = require('./message'),
     Mongo   = require('mongodb');
 
 function User(){
@@ -69,8 +69,14 @@ User.prototype.send = function(receiver, obj, cb){
       sendEmail(this.email, receiver.email, 'Message from Fake Facebook', obj.message, cb);
       break;
     case 'internal':
-      Message.create(this.email, receiver.email, obj.message, cb);
+      Message.create(this, receiver.email, obj.message, cb);
   }
+};
+
+User.findMessages = function(id, cb){
+  Message.findAllByReceiverId(id, function(messages){
+    cb(messages);
+  });
 };
 
 module.exports = User;
