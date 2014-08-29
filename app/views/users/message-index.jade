@@ -14,5 +14,5 @@ block content
             tr
               td: a(href='/users/'+ user.email)= message.sender.name
               td= message.date
-              td: a(href='/users/'+user._id+'/message/'+message._id) #{message.body.substring(0,9)}...
+              td: a.message(href='/users/'+user._id+'/message/'+message._id) #{message.body.substring(0,9)}...
     .col-xs-2

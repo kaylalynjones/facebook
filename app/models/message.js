@@ -15,6 +15,7 @@ Object.defineProperty(Message, 'collection', {
   get: function(){return global.mongodb.collection('messages');}
 });
 
+
 Message.create = function(sender, receiver, body, cb){
   var message = new Message(sender, receiver, body);
   Message.collection.save(message, cb);
@@ -30,11 +31,18 @@ Message.findAllByReceiverId = function(id, cb){
 };
 
 Message.findById = function(id, cb){
-  console.log('findById message below!');
   var $id = Mongo.ObjectID(id);
   Message.collection.findOne({_id: $id}, function(err, message){
-    console.log(message);
-    cb(message);
+    message.isRead = true;
+    Message.collection.save(message, function(){
+      cb(message);
+    });
+  });
+};
+
+Message.find = function(query, cb){
+  Message.collection.find(query).toArray(function(err, messages){
+    cb(messages);
   });
 };
 

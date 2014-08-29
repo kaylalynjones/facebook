@@ -89,8 +89,15 @@ exports.messageList = function(req, res){
 };
 
 exports.messageShow = function(req, res){
-  console.log('messageShow: mId : ', req.params.mId);
   Message.findById(req.params.mId, function(message){
     res.render('users/message-show', {message:message});
+  });
+};
+
+exports.unreadMessages = function(req, res){
+  Message.find({receiverId:res.locals.user._id, isRead:false}, function(messages){
+    
+    
+    res.send(messages);
   });
 };
